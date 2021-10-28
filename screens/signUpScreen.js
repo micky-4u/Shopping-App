@@ -23,7 +23,8 @@ const LoginScreen = () =>{
                                  name: '',
                                  email: '',
                                  username: '',
-                                 password: ''
+                                 password: '',
+                                 repass: ''
                                  }}
                             onSubmit={values => console.log(values)}
                         >
@@ -61,9 +62,9 @@ const LoginScreen = () =>{
                                     
                                      />
                                       <TextInput
-                                    onChangeText={handleChange('password')}
-                                    onBlur={handleBlur('password')}
-                                    value={values.password}
+                                    onChangeText={handleChange('repass')}
+                                    onBlur={handleBlur('repass')}
+                                    value={values.repass}
                                     placeholder= "Re-type password"
                                     secureTextEntry = {true}
                                     style = {styles.inputs}
