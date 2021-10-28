@@ -68,14 +68,19 @@ const LoginScreen = () =>{
                  </View>
                
 
-           <View style = {{flex: 1, flexDirection: "row", justifyContent: "center", marginTop: 20,  }}>
+           <View style = {{flex: 1, flexDirection: "row", justifyContent: "center", marginTop: 20, marginBottom: 140,  }}>
                <TouchableOpacity style = {styles.others}>
-                    <FontAwesome name="facebook-square" size={24} color="black" />
+                    <FontAwesome name="facebook-square" size={30} color="blue" />
                </TouchableOpacity>
                 <TouchableOpacity style = {styles.others}>
-                    <MaterialCommunityIcons name="gmail" size={24} color="black" />
+                    <MaterialCommunityIcons name="gmail" size={30} color="red" />
                </TouchableOpacity>
 
+           </View>
+           <View style = {styles.footText}>
+                <TouchableOpacity >
+                   <Text>Don't have a account</Text>
+               </TouchableOpacity>
            </View>
 
 
@@ -127,7 +132,16 @@ const styles = StyleSheet.create({
 
     }, 
     others: {
-        padding: 20
+        padding: 15,
+        borderWidth: 1,
+        margin: 30,
+        borderColor: "#fff",
+        borderRadius: 10
+        
+    },
+    footText: {
+        marginBottom: 40,
+        alignItems: "center"
     }
 
 })
