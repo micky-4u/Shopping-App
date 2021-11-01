@@ -9,7 +9,7 @@ import { Formik } from 'formik';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const LoginScreen = () =>{
+const LoginScreen = ({navigation}) =>{
     return (
         <View style = {styles.container}>
            <View style = {styles.textArea}>
@@ -51,7 +51,7 @@ const LoginScreen = () =>{
                                     <Text style = {{color: "blue"}}>forgot password</Text>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity  onPress={handleSubmit} title="Submit" style = {styles.loginBtn}>
+                                <TouchableOpacity  onPress={()=> navigation.navigate('HomeScreen', { name: 'HomeScreen'})} title="Submit" style = {styles.loginBtn}  >
                                     <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Login</Text>
                                 </TouchableOpacity>
                             </View>

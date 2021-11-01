@@ -11,6 +11,7 @@ import WelcomeScreen from './screens/welcomeScreen';
 import CartScreen from './screens/cartScreen'
 import SignUpScreen from './screens/signUpScreen';
 import LoginScreen from './screens/loginScreen';
+import HomeScreen from './screens/homeScreen'
 
 const Stack = createNativeStackNavigator();
 
@@ -22,14 +23,17 @@ export default function App() {
           screenOptions={{headerShown: false}}
         >
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="CartScreen" component={CartScreen} />
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="CartScreen" component={CartScreen} />
         </Stack.Navigator> 
       </NavigationContainer>
 
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
