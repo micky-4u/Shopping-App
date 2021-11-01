@@ -8,8 +8,9 @@ import { Formik } from 'formik';
 //icons
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
 
-const LoginScreen = () =>{
+const LoginScreen = ({navigation}) =>{
     return (
         <View style = {styles.container}>
            <View style = {styles.textArea}>
@@ -71,8 +72,12 @@ const LoginScreen = () =>{
                                     
                                      />
 
+
                                 <TouchableOpacity  onPress={handleSubmit} title="Submit" style = {styles.loginBtn}>
                                     <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Done</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity  onPress = {()=> navigation.navigate('LoginScreen', { name: 'LoginScreen' })}>
+                                    <Text style ={{textAlign: "center", color: "blue"}}>already have an account</Text>
                                 </TouchableOpacity>
                             </View>
                     )}
@@ -149,7 +154,8 @@ const styles = StyleSheet.create({
     others: {
         padding: 15,
         borderWidth: 1,
-        margin: 30,
+        margin: 20,
+        paddingHorizontal:20,
         borderColor: "#fff",
         borderRadius: 10
         

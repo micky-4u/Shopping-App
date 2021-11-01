@@ -3,8 +3,8 @@ export const data = [
     name: "Samsung A2", 
     category: "",
     imagePath:require("../images/images1.jpeg"),
-    amount: "",
-    discount: '',
+    amount: "GH$ 73,896",
+    discount: '30% off',
     ratings: "",
     inStock: "",
     favorite: "",
@@ -15,8 +15,8 @@ export const data = [
     name: "I phone X", 
     category: "",
     imagePath:require("../images/images2.jpeg"),
-    amount: "",
-    discount: '',
+    amount: "GH$ 6,000",
+    discount: '50% off',
     ratings: "",
     inStock: "",
     favorite: "",
@@ -27,8 +27,8 @@ export const data = [
     name: "Nokia",
     category: "", 
     imagePath:require("../images/images3.jpeg"), 
-    amount: "",
-    discount: '',
+    amount: "GH$ 3,675",
+    discount: '10% off',
     ratings: "",
     inStock: "",
     favorite: "",
@@ -40,8 +40,8 @@ export const data = [
     name: "Infinix",
     category: "", 
     imagePath:require("../images/images4.jpeg"), 
-    amount: "",
-    discount: '',
+    amount: "GH$ 2,500",
+    discount: '15% off',
     ratings: "",
     inStock: "",
     favorite: "",
@@ -49,3 +49,46 @@ export const data = [
 },
 ]
 
+export const categories =[
+    {id: 1,
+    name: "All",
+    page: ""
+    },
+        {id: 2,
+    name: "Samsung",
+    page: ""
+    },
+        {id: 3,
+    name: "Iphone",
+    page: ""
+    },
+        {id: 4,
+    name: "Techno",
+    page: ""
+    },
+    {id: 5,
+    name: "Infinix",
+    page: ""
+    },
+    {id: 6,
+    name: "Itel",
+    page: ""
+    },
+        {id: 7,
+    name: "Huawei",
+    page: ""
+    },
+        {id: 8,
+    name: "Motorolla",
+    page: ""
+    },
+        {id: 9,
+    name: "Nokia",
+    page: ""
+    },
+
+    {id: 10,
+    name: "Pixel",
+    page: ""
+    },
+]
