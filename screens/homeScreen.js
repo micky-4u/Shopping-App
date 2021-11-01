@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native';
 import {useState} from 'react';
 
 import {data} from '../product-data/products'
@@ -28,7 +28,8 @@ const HomeScreen = (props) =>{
                 <View>
                     <Text>{data.discount}</Text>
                 </View>
-                <View>
+                <View style ={styles.imageArea}>
+                    <Image source ={data.imagePath} resizeMode="cover" style={{width: '100%', height: '100%',}}/>
                 </View>
                 <View>
                     <Text>{data.name}</Text>
@@ -77,7 +78,6 @@ const FinialHomePage = ({navigation}) =>{
 }
 const styles = StyleSheet.create({
     products:{
-        backgroundColor: "blue",
         width: 170,
         marginBottom: 15,
         height: 220,
@@ -93,7 +93,18 @@ const styles = StyleSheet.create({
     },
     topView: {
         
-    }
+    },
+     imageArea:{
+        flex: 1,
+        height: 220,
+        width: 170,
+        marginRight: 10,
+        marginLeft: 10,
+        marginTop: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 25,
+    },
 })
 
 export default FinialHomePage;
