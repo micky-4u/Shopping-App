@@ -21,8 +21,8 @@ const WelcomeScreen = ({navigation}) =>{
 
             <View style={styles.textArea}>
                 <Text style = {{fontSize: 30, fontWeight: "bold", textAlign: 'center', color: "#665C6C"}} >
-                    Home Of{"\n"}
-                    Quality Phones
+                    Welcome to{"\n"}
+                    Adano's Ventures
                 </Text>
                 <Text style ={{textAlign: "center", fontSize: 16, paddingTop: 30, color: "#B7ACBC", fontWeight: "bold"}}>
                     Quality and affordable mobile phones{"\n"}
