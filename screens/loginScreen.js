@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, ImageBackground } from 'react-native';
 
 // form handler
 import { Formik } from 'formik';
@@ -9,9 +9,14 @@ import { Formik } from 'formik';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+const image = require("../images/bg.jpg")
+
+
 const LoginScreen = ({navigation}) =>{
     return (
         <View style = {styles.container}>
+            <ImageBackground source={image} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}>
+
            <View style = {styles.textArea}>
                 <Text style ={{fontSize: 30, fontWeight: "bold", textAlign: 'center', color: "#665C6C" }}>Hello</Text>
                 <Text>Welcome to Adano's Ventures</Text>
@@ -82,7 +87,8 @@ const LoginScreen = ({navigation}) =>{
                    <Text style = {{color: "blue"}}>Don't have an account?</Text>
                </TouchableOpacity>
            </View>
-
+        
+        </ImageBackground>
 
         </View>
 

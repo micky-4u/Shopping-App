@@ -4,15 +4,12 @@ import { StyleSheet, Text, View, TouchableOpacity, Button, ImageBackground, Imag
 
 // color grading import
 import { LinearGradient } from 'expo-linear-gradient';
+const image = require("../images/bg.jpg")
 
 const WelcomeScreen = ({navigation}) =>{
     return (
         <View style = {styles.container1}>
-            <LinearGradient
-              // Background Linear Gradient
-                colors={['#F3E4FB', 'transparent']}
-                style={styles.background}
-             />
+           <ImageBackground source={image} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}>
 
             <View style ={styles.imageArea}>
                 <Image source={require("../images/homeimg.jpg")} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}/>
@@ -20,11 +17,11 @@ const WelcomeScreen = ({navigation}) =>{
             </View>
 
             <View style={styles.textArea}>
-                <Text style = {{fontSize: 30, fontWeight: "bold", textAlign: 'center', color: "#665C6C"}} >
+                <Text style = {{fontSize: 30, fontWeight: "bold", textAlign: 'center', color: "#000"}} >
                     Welcome to{"\n"}
                     Adano's Ventures
                 </Text>
-                <Text style ={{textAlign: "center", fontSize: 16, paddingTop: 30, color: "#B7ACBC", fontWeight: "bold"}}>
+                <Text style ={{textAlign: "center", fontSize: 16, paddingTop: 30, color: "#000", fontWeight: "bold", shadowColor:"#000"}}>
                     Quality and affordable mobile phones{"\n"}
                     accessaries and all the electronics
                 </Text>
@@ -36,12 +33,12 @@ const WelcomeScreen = ({navigation}) =>{
                    
                 
                 <TouchableOpacity style = {styles.btn2} onPress = {()=> navigation.navigate('LoginScreen', { name: 'LoginScreen' })} >
-                    <Text style ={{fontWeight: "bold",color: "#878787"}}>Login</Text>
+                    <Text style ={{fontWeight: "bold",color: "#fff"}}>Login</Text>
                 </TouchableOpacity>
             
                    
             </View>
-
+            </ImageBackground>
         </View>
 
     )
@@ -74,6 +71,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 25,
+        borderWidth: 1,
+        borderColor: "#AD00FF"
     },
     textArea: {
         alignItems: "center",
@@ -100,6 +99,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 10,
         backgroundColor: "#fff",
+        borderWidth: 1,
+        borderColor: "#fff"
         
         
         
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: -20,
         borderTopRightRadius: 20,
         borderBottomRightRadius: 20,
-        right: 5,
+        right: 10,
         
 
     },

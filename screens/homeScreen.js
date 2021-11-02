@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Image, ImageBackground } from 'react-native';
 import {useState} from 'react';
 
 import {data, categories, bottonNav} from '../product-data/products'
@@ -10,7 +10,9 @@ import { EvilIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { SimpleLineIcons } from '@expo/vector-icons';
 
+const image = require("../images/bg.jpg")
 
 
 const ProductsPage = (props) =>{
@@ -92,7 +94,8 @@ const TopView = (props) =>{
                         </TouchableOpacity>
                     </View>
 
-                        <View style={{flexDirection: "row", justifyContent: "flex-start", borderWidth: 1, borderRadius: 10, margin: 10, padding: 10, backgroundColor: "#fff" }}>
+                        <View style={{flexDirection: "row", justifyContent: "flex-start", borderWidth: 1, borderRadius: 10, margin: 10, padding: 10, backgroundColor: "#fff",        borderColor: "#FF6500"
+                                 }}>
                             <View>
                                 <EvilIcons name="search" size={24} color="black" />
                             </View>
@@ -106,15 +109,15 @@ const TopView = (props) =>{
     )
 }
 
-const BottomNav = (props) =>{
+export const BottomNav = (props) =>{
 
     return (
         <View style ={styles.buttomNav}>
             <TouchableOpacity>
-              <FontAwesome name="home" size={35} color="black" />  
+                <SimpleLineIcons name="home" size={24} color="black" onPress ={()=> props.nav.navigate('HomeScreen',{name:"HomeScreen"})} />
             </TouchableOpacity>
              <TouchableOpacity>
-                 <FontAwesome5 name="user" size={24} color="black" />
+                 <FontAwesome5 name="user" size={24} color="black"  />
             </TouchableOpacity>
         </View>
     )
@@ -125,6 +128,8 @@ const BottomNav = (props) =>{
 const FinialHomePage = ({navigation}) =>{
     return(
         <View style ={{flex : 1, justifyContent: "space-evenly"}}>
+        <ImageBackground source={image} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}>
+
             <View>
             <TopView nav = {navigation}/>
             </View>
@@ -171,7 +176,7 @@ const FinialHomePage = ({navigation}) =>{
                 scrollEventThrottle={200}
                 decelerationRate="fast"
                 pagingEnabled
-                style={{marginRight: 10, marginLeft: 10, paddingRight: 5}}
+                style={{marginRight: 10, marginLeft: 10,}}
                 >   
                 <View style = {styles.productView}>
                     <ProductsPage nav ={navigation} />
@@ -193,9 +198,11 @@ const FinialHomePage = ({navigation}) =>{
 
             {/* Bottom navigation area */}
 
-            <View style = {{alignItems: "center",backgroundColor: "#fff", borderTopWidth: 1}}>
-                <BottomNav  />
+            <View style = {{alignItems: "center",backgroundColor: "#fff", borderTopWidth: 1, position: "relative"}}>
+                <BottomNav nav ={navigation} />
             </View>
+
+            </ImageBackground>
         </View>
 
         
@@ -241,7 +248,8 @@ const styles = StyleSheet.create({
         marginRight: 5,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
+        borderColor: "#FF6500"
 
     },
     buttomNav:{
