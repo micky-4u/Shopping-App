@@ -1,4 +1,6 @@
-export const data = [
+
+
+ const PRODUCTS = [
     {id : 1,
     name: "Samsung A2", 
     category: "",
@@ -49,46 +51,28 @@ export const data = [
 },
 ]
 
-export const categories =[
-    {id: 1,
-    name: "All",
-    page: ""
-    },
-        {id: 2,
-    name: "Samsung",
-    page: ""
-    },
-        {id: 3,
-    name: "Iphone",
-    page: ""
-    },
-        {id: 4,
-    name: "Techno",
-    page: ""
-    },
-    {id: 5,
-    name: "Infinix",
-    page: ""
-    },
-    {id: 6,
-    name: "Itel",
-    page: ""
-    },
-        {id: 7,
-    name: "Huawei",
-    page: ""
-    },
-        {id: 8,
-    name: "Motorolla",
-    page: ""
-    },
-        {id: 9,
-    name: "Nokia",
-    page: ""
-    },
 
-    {id: 10,
-    name: "Pixel",
-    page: ""
-    },
+export const categories =[
+    {id: 1, name: "All", page: ""},
+    {id: 2, name: "Samsung", page: ""},
+    {id: 3, name: "Iphone", page: "" },
+    {id: 4, name: "Techno", page: "" },
+    {id: 5, name: "Infinix", page: ""},
+    {id: 6, name: "Itel", page: "" },
+    {id: 7, name: "Huawei", page: "" },
+    {id: 8, name: "Motorolla", page: "" },
+    {id: 9, name: "Nokia", page: "" },
+    {id: 10, name: "Pixel", page: "" },
 ]
+
+export const bottonNav =[
+    {id: 1, name: "Home", icon: ""},
+    {id: 2, name: "Home", icon: ""},
+]
+
+export function getProducts() {
+    return PRODUCTS;
+}
+export function getProduct(id) {
+    return PRODUCTS.find((product) => (product.id == id));
+}

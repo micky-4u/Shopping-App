@@ -1,55 +1,49 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Image, ImageBackground } from 'react-native';
-import {useState} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Image, ImageBackground, FlatList } from 'react-native';
+import {useState, useEffect} from 'react';
 
 import {data, categories, bottonNav} from '../product-data/products'
+import { getProducts } from '../product-data/products';
 // importing screens
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 const image = require("../images/bg.jpg")
 
 
-const ProductsPage = (props) =>{
-    const [product, onProduct] = useState(data)
+const ProductsPage = ({name, image, discount, amount, key, onPress}) =>{
    return (
-    
-    product.map((data) =>{
-    return (
         
-        <View style= {styles.productView} key = {data.id}>
+        // <View style= {styles.productView}>
            
-            <View>
-            <TouchableOpacity style ={styles.products} onPress = {()=> props.nav.navigate('', { name: '' }) }>
+            // <View>
+            <TouchableOpacity style ={styles.products} onPress = {onPress} key ={key}>
                 <View>
-                    <Text style={{marginBottom: 5}}>{data.discount}</Text>
+                    <Text style={{marginBottom: 5}}>{discount}</Text>
                 </View>
                 <View style ={styles.imageArea}>
-                    <Image source ={data.imagePath} resizeMode="cover" style={{width: '100%', height: '100%',}}/>
+                    <Image source ={image} resizeMode="cover" style={{width: '100%', height: '100%',}}/>
                 </View>
                 <View>
-                    <Text style = {{marginTop: 5}}>{data.name}</Text>
+                    <Text style = {{marginTop: 5}}>{name}</Text>
                 </View>
                 <View>
-                    <Text style ={{fontWeight: 'bold'}}>{data.amount}</Text>
+                    <Text style ={{fontWeight: 'bold'}}>{amount}</Text>
                 </View>
             </TouchableOpacity>
-            </View>
-        </View>
+            // {/* </View> */}
+        // </View>
     )
-}
-   
-   )
-   )
 }
 
 const Categories = (props) =>{
     const [cat, onCat] = useState(categories)
+
+
    return (
        <ScrollView
               horizontal={true}
@@ -125,7 +119,21 @@ export const BottomNav = (props) =>{
 
 
 
-const FinialHomePage = ({navigation}) =>{
+const FinialHomePage = ({navigation}) =>{    
+
+    const renderItems = ({item}) => {
+        return(
+
+         <ProductsPage name={item.name} image={item.imagePath} discount={item.discount} amount ={item.amount} onPress ={()=>navigation.navigate('ProductDetails', {productId: item.id, name: "ProductsDetails"})} />
+         )}
+    
+    const [products, setProducts] = useState([]);
+    
+    useEffect(() => {
+        setProducts(getProducts());
+    });
+    
+
     return(
         <View style ={{flex : 1, justifyContent: "space-evenly"}}>
         <ImageBackground source={image} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}>
@@ -147,6 +155,7 @@ const FinialHomePage = ({navigation}) =>{
               scrollEventThrottle={200}
               decelerationRate="fast"
               pagingEnabled
+
               >   
 
             <View style = {styles. cat}>
@@ -155,11 +164,17 @@ const FinialHomePage = ({navigation}) =>{
                     <Text style = {styles.text}> Veiw more</Text>
                 </TouchableOpacity>
             </View>
-
-              
-            <View style = {styles.productView}>
-                <ProductsPage nav ={navigation} />
-            </View>
+            <View style={{margin: 5}}>
+            <FlatList
+            columnWrapperStyle={{justifyContent: 'space-between'}}
+            numColumns={2}
+            data={products}
+            renderItem={renderItems}
+            keyExtractor={(items) => items.id.toString()}
+            style ={{margin:5}}
+            contentInset={{ right: 5, top: 5, left: 5, bottom: 5 }}
+             />
+             </View>
 
 
             <View style = {styles. cat}>
@@ -178,9 +193,16 @@ const FinialHomePage = ({navigation}) =>{
                 pagingEnabled
                 style={{marginRight: 10, marginLeft: 10,}}
                 >   
-                <View style = {styles.productView}>
-                    <ProductsPage nav ={navigation} />
-                </View>
+            
+            <FlatList
+            horizontal
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator ={false}
+            data={products}
+            renderItem={renderItems}
+            keyExtractor={(items) => items.id.toString()}
+            style={{margin: 5}}
+           />
             </ScrollView>
             <View style = {styles. cat}>
                 <Text style = {styles.text}>Samsumg</Text>
@@ -188,9 +210,18 @@ const FinialHomePage = ({navigation}) =>{
                     <Text style = {styles.text}> Veiw more</Text>
                 </TouchableOpacity>
             </View>
-            <View style = {styles.productView}>
-                <ProductsPage nav ={navigation} />
-            </View>
+            
+            <View style={{margin: 5, padding: 5}}>
+            <FlatList
+            columnWrapperStyle={{justifyContent: 'space-between'}}
+            numColumns={2}
+            data={products}
+            renderItem={renderItems}
+            keyExtractor={(items) => items.id.toString()}
+            style ={{margin:5}}
+            contentInset={{ right: 5, top: 5, left: 5, bottom: 5 }}
+             />
+             </View>
 
 
             </ScrollView>
@@ -199,7 +230,7 @@ const FinialHomePage = ({navigation}) =>{
             {/* Bottom navigation area */}
 
             <View style = {{alignItems: "center",backgroundColor: "#fff", borderTopWidth: 1, position: "relative"}}>
-                <BottomNav nav ={navigation} />
+                <BottomNav />
             </View>
 
             </ImageBackground>
@@ -241,7 +272,6 @@ const styles = StyleSheet.create({
     category:{
         width: 100,
         height: 40,
-        backgorund: "blue",
         borderWidth: 1,
         borderRadius: 10,
         padding: 10,
@@ -249,7 +279,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#fff",
-        borderColor: "#FF6500"
+        borderColor: "#FF6500",
 
     },
     buttomNav:{

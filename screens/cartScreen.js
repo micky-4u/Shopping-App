@@ -7,7 +7,6 @@ import { BottomNav } from './homeScreen';
 // importing icons
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
 
 const CartScreen = ({navigation}) =>{
         const [product, onProduct] = React.useState(data)
@@ -44,11 +43,11 @@ const CartScreen = ({navigation}) =>{
                                             title = "-"
                                             style={{}}
                                             /> */}
-                                            <FontAwesome5 name="minus" size={20} color="black" onPress={()=>setNum(num-1)} />
+                                            <FontAwesome5 name="minus" size={20} color="#FF6C00" onPress={()=>setNum(num-1)} />
                                         <Text style={{fontSize: 25, paddingHorizontal: 10}}>
                                             {num}
                                         </Text>
-                                        <FontAwesome name="plus" size={20} color="black" onPress={()=>setNum(num+1)} />
+                                        <FontAwesome name="plus" size={20} color="#FF6C00" onPress={()=>setNum(num+1)} />
                                         {/* <Button tltle = "+"/> */}
                                     </View>
                                 </View>  
