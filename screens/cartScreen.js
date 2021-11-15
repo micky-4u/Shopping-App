@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import {data, categories, bottonNav} from '../product-data/products'
+import { mainProduct } from '../product-data/products';
+
 import { BottomNav } from './homeScreen';
 
 // importing icons
@@ -9,7 +10,11 @@ import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 const CartScreen = ({navigation}) =>{
-        const [product, onProduct] = React.useState(data)
+        const [product, onProduct] = React.useState([])
+
+        useEffect(()=>{
+            onProduct(mainProduct())
+        })
         const[num, setNum] = React.useState(0)
 
 
@@ -39,15 +44,11 @@ const CartScreen = ({navigation}) =>{
 
                                 <View style={styles.numOf}>
                                     <View style= {{flexDirection: "row", alignItems: "center", width: "100%"}} >
-                                        {/* <Button 
-                                            title = "-"
-                                            style={{}}
-                                            /> */}
-                                            <FontAwesome5 name="minus" size={20} color="#FF6C00" onPress={()=>setNum(num-1)} />
+                                            <FontAwesome5 name="minus" size={20} color="#FF6C00"/>
                                         <Text style={{fontSize: 25, paddingHorizontal: 10}}>
                                             {num}
                                         </Text>
-                                        <FontAwesome name="plus" size={20} color="#FF6C00" onPress={()=>setNum(num+1)} />
+                                        <FontAwesome name="plus" size={20} color="#FF6C00" />
                                         {/* <Button tltle = "+"/> */}
                                     </View>
                                 </View>  
@@ -69,7 +70,7 @@ const CartScreen = ({navigation}) =>{
                     </Text>
                     </View>
 
-                    <TouchableOpacity  onPress={()=> navigation.navigate('HomeScreen', { name: 'HomeScreen'})} title="Submit" style = {styles.loginBtn}  >
+                    <TouchableOpacity  onPress={()=> navigation.navigate('Checkout', { name: 'Checkout'})} title="Submit" style = {styles.loginBtn}  >
                         <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Buy</Text>
                     </TouchableOpacity> 
 

@@ -10,27 +10,26 @@ import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 
-// const image = require("../assets/images/bg.jpg")
+const image = require("../assets/images/bg.jpg")
 
 
-const LoginScreen = ({navigation}) =>{
+const Checkout = ({navigation}) =>{
     return (
         
         <View style = {styles.container}>
-                        <ImageBackground source={image} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}>
 
            <View style = {styles.textArea}>
-                <Text style ={{fontSize: 30, fontWeight: "bold", textAlign: 'center', color: "#665C6C" }}>Sign Up</Text>
-                <Text>Start shopping with Adano's Ventures</Text>
+                <Text style ={{fontSize: 30, fontWeight: "bold", textAlign: 'center', color: "#665C6C" }}>Add Shipping Details</Text>
+                <Text></Text>
            </View>
 
             <View style = {styles.inputArea}>
                  <Formik
                             initialValues={{
-                                 name: '',
+                                 Fullname: '',
                                  email: '',
-                                 username: '',
-                                 password: '',
+                                 Adress: '',
+                                 Llalndmark: '',
                                  repass: ''
                                  }}
                             onSubmit={values => console.log(values)}
@@ -38,9 +37,9 @@ const LoginScreen = ({navigation}) =>{
                             {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <View>
                                     <TextInput
-                                    onChangeText={handleChange('name')}
-                                    onBlur={handleBlur('name')}
-                                    value={values.name}
+                                    onChangeText={handleChange('Fullname')}
+                                    onBlur={handleBlur('Fullname')}
+                                    value={values.Fullname}
                                     placeholder= "Name"
                                     style = {styles.inputs}
                                      /><TextInput
@@ -51,19 +50,19 @@ const LoginScreen = ({navigation}) =>{
                                     style = {styles.inputs}
                                      />
                                     <TextInput
-                                    onChangeText={handleChange('username')}
-                                    onBlur={handleBlur('username')}
-                                    value={values.username}
-                                    placeholder= "Username"
+                                    onChangeText={handleChange('Adress')}
+                                    onBlur={handleBlur('Adress')}
+                                    value={values.Adress}
+                                    placeholder= "Adress"
                                     style = {styles.inputs}
                                      />
                                 
                                 
                                     <TextInput
-                                    onChangeText={handleChange('password')}
-                                    onBlur={handleBlur('password')}
-                                    value={values.password}
-                                    placeholder= "Password"
+                                    onChangeText={handleChange('Llalndmark')}
+                                    onBlur={handleBlur('Llalndmark')}
+                                    value={values.Llalndmark}
+                                    placeholder= "Llalndmark"
                                     secureTextEntry = {true}
                                     style = {styles.inputs}
                                     
@@ -72,7 +71,7 @@ const LoginScreen = ({navigation}) =>{
                                     onChangeText={handleChange('repass')}
                                     onBlur={handleBlur('repass')}
                                     value={values.repass}
-                                    placeholder= "Re-type password"
+                                    placeholder= ""
                                     secureTextEntry = {true}
                                     style = {styles.inputs}
                                     
@@ -82,34 +81,15 @@ const LoginScreen = ({navigation}) =>{
                                 <TouchableOpacity  onPress={handleSubmit} title="Submit" style = {styles.loginBtn}>
                                     <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Done</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity  onPress = {()=> navigation.navigate('LoginScreen', { name: 'LoginScreen' })}>
-                                    <Text style ={{textAlign: "center", color: "blue"}}>already have an account</Text>
-                                </TouchableOpacity>
                             </View>
                     )}
                  </Formik>
             </View>
 
-                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 35, marginLeft: 35, marginTop: 45}}>
-                    <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-                    <View>
-                        <Text style={{width:90, textAlign: 'center', paddingHorizontal: 5,}}>SignUP with</Text>
-                    </View>
-                    <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-                 </View>
+              
                
 
-           <View style = {{flex: 1, flexDirection: "row", justifyContent: "center", }}>
-               <TouchableOpacity style = {styles.others}>
-                    <FontAwesome name="facebook-square" size={30} color="blue" />
-               </TouchableOpacity>
-                <TouchableOpacity style = {styles.others}>
-                    <MaterialCommunityIcons name="gmail" size={30} color="red" />
-               </TouchableOpacity>
-
-           </View>
-
-        </ImageBackground>
+          
         </View>
 
     )
@@ -173,4 +153,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default LoginScreen;
+export default Checkout;

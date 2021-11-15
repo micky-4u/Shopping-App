@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ImageBackground } from 'react-native';
 
@@ -9,7 +9,7 @@ import { Formik } from 'formik';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const image = require("../images/bg.jpg")
+const image = require("../assets/images/bg.jpg")
 
 
 const LoginScreen = ({navigation}) =>{

@@ -1,10 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Button, ImageBackground, Image } from 'react-native';
 
 // color grading import
 import { LinearGradient } from 'expo-linear-gradient';
-const image = require("../images/bg.jpg")
+const image = require("../assets/images/bg.jpg")
 
 const WelcomeScreen = ({navigation}) =>{
     return (
@@ -12,7 +11,7 @@ const WelcomeScreen = ({navigation}) =>{
            <ImageBackground source={image} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}>
 
             <View style ={styles.imageArea}>
-                <Image source={require("../images/homeimg.jpg")} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}/>
+                <Image source={require("../assets/images/homeimg.jpg")} resizeMode="cover" style={{width: '100%', height: '100%', borderRadius: 20}}/>
                 
             </View>
 

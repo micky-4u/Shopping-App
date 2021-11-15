@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Image,
 import {useState, useEffect} from 'react';
 
 import {data, categories, bottonNav} from '../product-data/products'
-import { getProducts } from '../product-data/products';
+import { mainProduct } from '../product-data/products';
 // importing screens
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
@@ -12,7 +12,7 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
-const image = require("../images/bg.jpg")
+const image = require("../assets/images/bg.jpg")
 
 
 const ProductsPage = ({name, image, discount, amount, key, onPress}) =>{
@@ -32,7 +32,7 @@ const ProductsPage = ({name, image, discount, amount, key, onPress}) =>{
                     <Text style = {{marginTop: 5}}>{name}</Text>
                 </View>
                 <View>
-                    <Text style ={{fontWeight: 'bold'}}>{amount}</Text>
+                    <Text style ={{fontWeight: 'bold'}}>GH$ {amount}</Text>
                 </View>
             </TouchableOpacity>
             // {/* </View> */}
@@ -59,7 +59,7 @@ const Categories = (props) =>{
        <View style= {styles.productView} key = {cat.id}>
             
             <View >
-            <TouchableOpacity  style ={styles.category} onPress = {()=> props.nav.navigate('CartScreen', { name: 'CartScreen' }) }>
+            <TouchableOpacity  style ={styles.category}>
                 <Text>{data.name}</Text>
             </TouchableOpacity>
             </View>
@@ -124,13 +124,13 @@ const FinialHomePage = ({navigation}) =>{
     const renderItems = ({item}) => {
         return(
 
-         <ProductsPage name={item.name} image={item.imagePath} discount={item.discount} amount ={item.amount} onPress ={()=>navigation.navigate('ProductDetails', {productId: item.id, name: "ProductsDetails"})} />
+         <ProductsPage name={item.name} image={item.imagePath} discount={item.discount} amount ={item.amount.toString()} onPress ={()=>navigation.navigate('ProductDetails', {productId: item.id, name: "ProductsDetails"})} />
          )}
     
     const [products, setProducts] = useState([]);
     
     useEffect(() => {
-        setProducts(getProducts());
+        setProducts(mainProduct());
     });
     
 

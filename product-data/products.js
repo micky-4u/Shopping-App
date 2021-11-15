@@ -1,11 +1,11 @@
 
 
- const PRODUCTS = [
+ const allData = [
     {id : 1,
     name: "Samsung A2", 
     category: "",
-    imagePath:require("../images/images1.jpeg"),
-    amount: "GH$ 73,896",
+    imagePath:require("../assets/images/images1.jpeg"),
+    amount: 25411,
     discount: '30% off',
     ratings: "",
     inStock: "",
@@ -16,8 +16,8 @@
     {id : 2, 
     name: "I phone X", 
     category: "",
-    imagePath:require("../images/images2.jpeg"),
-    amount: "GH$ 6,000",
+    imagePath:require("../assets/images/images2.jpeg"),
+    amount: 25200,
     discount: '50% off',
     ratings: "",
     inStock: "",
@@ -28,8 +28,8 @@
     {id : 3,
     name: "Nokia",
     category: "", 
-    imagePath:require("../images/images3.jpeg"), 
-    amount: "GH$ 3,675",
+    imagePath:require("../assets/images/images3.jpeg"), 
+    amount: 3200,
     discount: '10% off',
     ratings: "",
     inStock: "",
@@ -41,8 +41,8 @@
     {id : 4,
     name: "Infinix",
     category: "", 
-    imagePath:require("../images/images4.jpeg"), 
-    amount: "GH$ 2,500",
+    imagePath:require("../assets/images/images4.jpeg"), 
+    amount: 22000,
     discount: '15% off',
     ratings: "",
     inStock: "",
@@ -70,9 +70,9 @@ export const bottonNav =[
     {id: 2, name: "Home", icon: ""},
 ]
 
-export function getProducts() {
-    return PRODUCTS;
+export function mainProduct() {
+    return allData;
 }
-export function getProduct(id) {
-    return PRODUCTS.find((product) => (product.id == id));
+export function mainProductId(id) {
+    return allData.find((product) => (product.id == id));
 }

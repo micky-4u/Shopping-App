@@ -7,30 +7,41 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // importing Screens
 import WelcomeScreen from './screens/welcomeScreen';
-// import CartScreen from './screens/cartScreen'
+import CartScreen from './screens/cartScreen'
 import SignUpScreen from './screens/signUpScreen';
 import LoginScreen from './screens/loginScreen';
 import HomeScreen from './screens/homeScreen'
 import ProductDetails from './screens/produceDetails'
+import  Checkout from './screens/checkout'
+import { CatNav } from './product-data/cartNavigator';
+import { CartProvider } from './product-data/cartEngine';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
 
+    <CartProvider>
+
+
       <NavigationContainer >
         <Stack.Navigator 
-          screenOptions={{headerShown: false}}
-        >
+        screenOptions={{headerShown: false}}
+          >
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
-          <Stack.Screen name="ProductDetails" component={ProductDetails} />
-          {/* <Stack.Screen name="CartScreen" component={CartScreen} />  */}
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          <Stack.Screen name="ProductDetails" component={ProductDetails}
+          options={({navigation})=>({
+            headerRight: () => <CatNav navigation={navigation} />
+          })}/>
+          <Stack.Screen name="CartScreen" component={CartScreen} /> 
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="Checkout" component={Checkout} />
         </Stack.Navigator> 
       </NavigationContainer>
 
+            </CartProvider>
   );
 }
 
