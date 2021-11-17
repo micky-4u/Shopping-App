@@ -86,9 +86,13 @@ const CartScreen = ({navigation})=>{
                 contentInset={{ right: 5, top: 5, left: 5, bottom: 5 }}
                 />
                 </ScrollView>
-                <View style ={{margin: 10}}>
-                <Text style={{fontSize: 20, fontWeight: "bold"}}>Total</Text>
-                <Text style={{fontSize: 20, fontWeight: "bold"}} >{getTotalPrice}</Text>
+                <View style ={{margin: 10, flexDirection: 'row,', justifyContent: "space-between"}}>
+                    <View>
+                        <Text style={{fontSize: 20, fontWeight: "bold"}}>Total</Text>
+                    </View>
+                    <View>
+                        <Text style={{fontSize: 20, fontWeight: "bold"}} >GH$ {getTotalPrice()}</Text>
+                    </View>
                 </View>
                  <TouchableOpacity onPress={()=>{navigation.navigate("Checkout", {name: Checkout})}} title="Submit" style = {styles.loginBtn}  >
                      <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Buy</Text>
