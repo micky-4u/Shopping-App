@@ -6,8 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 // importing Screens
-import WelcomeScreen from './screens/welcomeScreen';
 import CartScreen from './screens/cartScreen'
+import WelcomeScreen from './screens/welcomeScreen';
 import SignUpScreen from './screens/signUpScreen';
 import LoginScreen from './screens/loginScreen';
 import HomeScreen from './screens/homeScreen'
@@ -28,16 +28,13 @@ export default function App() {
         <Stack.Navigator 
         screenOptions={{headerShown: false}}
           >
+          <Stack.Screen name="CartScreen" component={CartScreen} /> 
+          <Stack.Screen name="Checkout" component={Checkout} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-          <Stack.Screen name="ProductDetails" component={ProductDetails}
-          options={({navigation})=>({
-            headerRight: () => <CatNav navigation={navigation} />
-          })}/>
-          <Stack.Screen name="CartScreen" component={CartScreen} /> 
+          <Stack.Screen name="ProductDetails" component={ProductDetails}/>
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="Checkout" component={Checkout} />
         </Stack.Navigator> 
       </NavigationContainer>
 

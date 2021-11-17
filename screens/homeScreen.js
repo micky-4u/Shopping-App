@@ -72,7 +72,7 @@ const Categories = (props) =>{
    )
 }
 
-const TopView = (props) =>{
+export const TopView = (props) =>{
     return(
                     <View style = {styles.topView}>
                         <View style = {{ flexDirection: "row", justifyContent: "space-between", padding: 10 }}>
@@ -205,7 +205,7 @@ const FinialHomePage = ({navigation}) =>{
            />
             </ScrollView>
             <View style = {styles. cat}>
-                <Text style = {styles.text}>Samsumg</Text>
+                <Text style = {styles.text}>Nokia</Text>
                 <TouchableOpacity>
                     <Text style = {styles.text}> Veiw more</Text>
                 </TouchableOpacity>

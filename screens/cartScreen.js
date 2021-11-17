@@ -1,44 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useEffect} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React, {useEffect, useState, useContext } from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native';
 import { mainProduct } from '../product-data/products';
 
 import { BottomNav } from './homeScreen';
+import { CartBackend } from '../product-data/cartEngine';
+import {TopView} from './homeScreen'
+
+
 
 // importing icons
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-const CartScreen = ({navigation}) =>{
-        const [product, onProduct] = React.useState([])
-
-        useEffect(()=>{
-            onProduct(mainProduct())
-        })
-        const[num, setNum] = React.useState(0)
 
 
+const Cart = ({navigation, name,amount, imagePath, num, id}) =>{
+    
     return (
         <View style={{backgroundColor: "#F8F9FA", flex: 1}}>
-            <View style= {styles.header}>
-                <Text style ={{fontSize: 20, textAlign: "center", fontWeight: "bold",}}>My Carts</Text>
-            </View>
 
             <View style= {{flex: 1}}>
-                {product.map((data) =>{
-                    return (
+                
                         <View >
-                            <View style= {styles.cartView} key = {data.id}>
+                            <View style= {styles.cartView} key = {id}>
                                 <View style={styles.productPic}>
-                                    <Image source ={data.imagePath} resizeMode="cover" style={{width: '100%', height: '100%',}}/>
+                                    <Image source ={imagePath} resizeMode="cover" style={{width: '100%', height: '100%',}}/>
                                 </View>
 
                                 <View style={styles.productDis}>
                                     <Text>
-                                        {data.name}
+                                        {name}
                                     </Text>
                                     <Text style={{fontWeight: 'bold'}}>
-                                        {data.amount}
+                                        {amount}
                                     </Text>
                                 </View>
 
@@ -55,31 +50,42 @@ const CartScreen = ({navigation}) =>{
                                 
                             </View>
                         </View>
-                    )
-                    }
-                    
-                    )
-                    }
-                    <View style={{flexDirection: "row", marginTop: 40, margin: 10, justifyContent: "space-between"}}>
-                    <Text style ={{fontSize: 20, fontWeight: "bold"}}>
-                        Total:
-                    </Text>
-
-                    <Text style ={{fontSize: 20, fontWeight: "bold", color: "#FF8300"}}>
-                        GH$ 32,000.00
-                    </Text>
-                    </View>
-
-                    <TouchableOpacity  onPress={()=> navigation.navigate('Checkout', { name: 'Checkout'})} title="Submit" style = {styles.loginBtn}  >
-                        <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Buy</Text>
-                    </TouchableOpacity> 
-
-            </View >
-            <View style = {{alignItems: "center",backgroundColor: "#fff", borderTopWidth: 1, position: "relative"}}>
-                <BottomNav nav ={navigation}/>
+                </View>
             </View>
+                    )
+                    
+}
+
+const CartScreen = ({navigation})=>{
+    const {items, getItemsCount, getTotalPrice} = useContext(CartBackend);
+
+
+    const renderItems = ({item}) => {
+        return(
+
+         <Cart name={item.name} image={item.imagePath} discount={item.discount} amount ={item.amount} onPress ={()=>navigation.navigate('ProductDetails', {productId: item.id, name: "ProductsDetails"})} />
+         )}
+
+        return(
+            <View style={{flex: 1, justifyContent: "space-between"}}>
+                <TopView nav={navigation}/>
+                <View style= {styles.header}>
+                    <Text style ={{fontSize: 20, textAlign: "center", fontWeight: "bold", justifyContent:"space-between"}}>My Carts</Text>
+                </View>
+
+                <FlatList
+                data={items}
+                renderItem={renderItems}
+                keyExtractor={(items) => items.id.toString()}
+                style ={{margin:5}}
+                contentInset={{ right: 5, top: 5, left: 5, bottom: 5 }}
+                />
+
+                <View style = {{alignItems: "center",backgroundColor: "#fff", borderTopWidth: 1, position: "relative", }}>
+                    <BottomNav nav ={navigation}/>
+                </View>            
         </View>
-    )
+        )
 }
 
 const styles = StyleSheet.create({

@@ -19,6 +19,7 @@ export default function ProductDetails({route, navigation}) {
 
   function pushItemToCart() {
     addProduct(product.id);
+    alert("Item added - see Carts")
   }
 
   return (
@@ -35,12 +36,12 @@ export default function ProductDetails({route, navigation}) {
         </View>
       </ScrollView>
 
-     <TouchableOpacity  onPress = {() => pushItemToCart} title="Submit" style = {styles.loginBtn}  >
+     <TouchableOpacity  onPress = {() => pushItemToCart()} title="Submit" style = {styles.loginBtn}  >
      <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Add to Cart</Text>
     </TouchableOpacity>
 
       <View style = {{alignItems: "center",backgroundColor: "#fff", borderTopWidth: 1, position: "relative"}}>
-                <BottomNav />
+                <BottomNav nav ={navigation} />
       </View>
     </SafeAreaView>
   );
