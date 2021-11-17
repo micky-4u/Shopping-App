@@ -69,7 +69,6 @@ const CartScreen = ({navigation})=>{
 
         return(
             <View style={{flex: 1, justifyContent: "space-between"}}>
-                <TopView nav={navigation}/>
                 <View style= {styles.header}>
                     <Text style ={{fontSize: 20, textAlign: "center", fontWeight: "bold", justifyContent:"space-between"}}>My Carts</Text>
                 </View>

@@ -28,13 +28,13 @@ export default function App() {
         <Stack.Navigator 
         screenOptions={{headerShown: false}}
           >
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="CartScreen" component={CartScreen} /> 
           <Stack.Screen name="Checkout" component={Checkout} />
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
-          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
           <Stack.Screen name="ProductDetails" component={ProductDetails}/>
           <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
         </Stack.Navigator> 
       </NavigationContainer>
 

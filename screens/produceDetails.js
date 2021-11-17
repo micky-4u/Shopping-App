@@ -3,6 +3,8 @@ import {Text, Image, View, ScrollView, SafeAreaView, Button, StyleSheet, Touchab
 import { mainProductId } from '../product-data/products';
 import { CartBackend } from '../product-data/cartEngine';
 import { BottomNav } from './homeScreen';
+import {TopView} from './homeScreen'
+
 
 
 
@@ -24,6 +26,7 @@ export default function ProductDetails({route, navigation}) {
 
   return (
     <SafeAreaView style={{flex:1}}>
+    <TopView nav={navigation}/>
       <ScrollView style={{backgroundColor: "#fff", borderBottomEndRadius: 40, height: "80%",}}>
         <View style ={{width: "100%", margin: 10}}>
           <Image
