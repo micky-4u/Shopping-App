@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState, useContext } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native';
-import { mainProduct } from '../product-data/products';
+import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native';
+import { mainProduct, } from '../product-data/products';
 
 import { BottomNav } from './homeScreen';
 import { CartBackend } from '../product-data/cartEngine';
@@ -12,6 +12,7 @@ import {TopView} from './homeScreen'
 // importing icons
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import Checkout from './checkout';
 
 
 
@@ -72,7 +73,11 @@ const CartScreen = ({navigation})=>{
                 <View style= {styles.header}>
                     <Text style ={{fontSize: 20, textAlign: "center", fontWeight: "bold", justifyContent:"space-between"}}>My Carts</Text>
                 </View>
-
+                 <ScrollView 
+                scrollEventThrottle={200}
+                decelerationRate="fast"
+                pagingEnabled
+                style={{marginRight: 10, marginLeft: 10,}}>
                 <FlatList
                 data={items}
                 renderItem={renderItems}
@@ -80,6 +85,10 @@ const CartScreen = ({navigation})=>{
                 style ={{margin:5}}
                 contentInset={{ right: 5, top: 5, left: 5, bottom: 5 }}
                 />
+                </ScrollView>
+                 <TouchableOpacity onPress={()=>{navigation.navigate("Checkout", {name: Checkout})}} title="Submit" style = {styles.loginBtn}  >
+                     <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Buy</Text>
+                </TouchableOpacity>
 
                 <View style = {{alignItems: "center",backgroundColor: "#fff", borderTopWidth: 1, position: "relative", }}>
                     <BottomNav nav ={navigation}/>

@@ -24,11 +24,13 @@ export default function ProductDetails({route, navigation}) {
 
   return (
     <SafeAreaView style={{flex:1}}>
-      <ScrollView style={{backgroundColor: "#fff", borderBottomEndRadius: 40, height: "80%"}}>
-        <Image
-          style={styles.image}
-          source={product.imagePath}
-        />
+      <ScrollView style={{backgroundColor: "#fff", borderBottomEndRadius: 40, height: "80%",}}>
+        <View style ={{width: "100%", margin: 10}}>
+          <Image
+            style={styles.image}
+            source={product.imagePath}
+          />
+        </View>
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{product.name}</Text>
           <Text style={styles.price}>GH$ {product.amount}</Text>
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
   image: {
     marginTop: 20,
     height: 450,
-    width: '95%',
+    width: '90%',
 
   },
   infoContainer: {

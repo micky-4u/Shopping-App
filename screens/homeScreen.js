@@ -3,14 +3,14 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput, Image, ImageBackground, FlatList } from 'react-native';
 import {useState, useEffect} from 'react';
 
-import {data, categories, bottonNav} from '../product-data/products'
-import { mainProduct } from '../product-data/products';
+import { mainProduct , categories } from '../product-data/products';
 // importing screens
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
 
 const image = require("../assets/images/bg.jpg")
 
@@ -40,37 +40,21 @@ const ProductsPage = ({name, image, discount, amount, key, onPress}) =>{
     )
 }
 
-const Categories = (props) =>{
-    const [cat, onCat] = useState(categories)
-
-
-   return (
-       <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              scrollEventThrottle={200}
-              decelerationRate="fast"
-              pagingEnabled
-              style={{margin: 10}}
-              >
-    {cat.map((data) =>{
+const Categories = ({name}) =>{
     return (
         
-       <View style= {styles.productView} key = {cat.id}>
+       <View style= {styles.productView}>
             
             <View >
             <TouchableOpacity  style ={styles.category}>
-                <Text>{data.name}</Text>
+                <Text>{name}</Text>
             </TouchableOpacity>
             </View>
         </View>
     )
 }
    
-   )}
-</ScrollView>
-   )
-}
+
 
 export const TopView = (props) =>{
     return(
@@ -126,11 +110,23 @@ const FinialHomePage = ({navigation}) =>{
 
          <ProductsPage name={item.name} image={item.imagePath} discount={item.discount} amount ={item.amount.toString()} onPress ={()=>navigation.navigate('ProductDetails', {productId: item.id, name: "ProductsDetails"})} />
          )}
+
+         const renderCart = ({item}) => {
+        return(
+
+         <Categories name={item.name} />
+         )}
     
     const [products, setProducts] = useState([]);
     
     useEffect(() => {
         setProducts(mainProduct());
+    });
+
+    const [cat, setdata] = useState([]);
+    
+    useEffect(() => {
+        setdata(categories);
     });
     
 
@@ -145,7 +141,25 @@ const FinialHomePage = ({navigation}) =>{
             {/* Categories Section */}
 
             <View >
-                <Categories nav = {navigation} />
+                <ScrollView 
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                scrollEventThrottle={200}
+                decelerationRate="fast"
+                pagingEnabled
+                style={{marginRight: 10, marginLeft: 10,}}
+                >   
+            
+            <FlatList
+                horizontal
+                pagingEnabled={true}
+                showsHorizontalScrollIndicator ={false}
+                data={cat}
+                renderItem={renderCart}
+                keyExtractor={(items) => items.id.toString()}
+                style={{margin: 5}}
+            />
+            </ScrollView>
             </View>
 
             {/* Sample Product Section */}
@@ -166,13 +180,14 @@ const FinialHomePage = ({navigation}) =>{
             </View>
             <View style={{margin: 5}}>
             <FlatList
-            columnWrapperStyle={{justifyContent: 'space-between'}}
-            numColumns={2}
+             horizontal
+             contentContainerStyle={{alignContent:'space-around'}}
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator ={false}
             data={products}
             renderItem={renderItems}
             keyExtractor={(items) => items.id.toString()}
-            style ={{margin:5}}
-            contentInset={{ right: 5, top: 5, left: 5, bottom: 5 }}
+            style={{margin: 5}}
              />
              </View>
 
@@ -213,13 +228,13 @@ const FinialHomePage = ({navigation}) =>{
             
             <View style={{margin: 5, padding: 5}}>
             <FlatList
-            columnWrapperStyle={{justifyContent: 'space-between'}}
-            numColumns={2}
+             horizontal
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator ={false}
             data={products}
             renderItem={renderItems}
             keyExtractor={(items) => items.id.toString()}
-            style ={{margin:5}}
-            contentInset={{ right: 5, top: 5, left: 5, bottom: 5 }}
+            style={{margin: 5}}
              />
              </View>
 
@@ -248,7 +263,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         borderColor: "#FF6500",
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
+        marginHorizontal: 10
 
     },
     productView: {

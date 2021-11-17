@@ -11,6 +11,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 
 const image = require("../assets/images/bg.jpg")
+import { BottomNav } from './homeScreen';
 
 
 const Checkout = ({navigation}) =>{
@@ -19,8 +20,8 @@ const Checkout = ({navigation}) =>{
         <View style = {styles.container}>
 
            <View style = {styles.textArea}>
-                <Text style ={{fontSize: 30, fontWeight: "bold", textAlign: 'center', color: "#665C6C" }}>Add Shipping Details</Text>
-                <Text></Text>
+                <Text style ={{fontSize: 30, fontWeight: "bold", textAlign: 'left', color: "#665C6C" }}>Payment Details</Text>
+                <Text>Complete your purchase my providing your payment details</Text>
            </View>
 
             <View style = {styles.inputArea}>
@@ -81,12 +82,19 @@ const Checkout = ({navigation}) =>{
                                 <TouchableOpacity  onPress={handleSubmit} title="Submit" style = {styles.loginBtn}>
                                     <Text style ={{textAlign: "center", color: "#fff", fontSize: 20, fontWeight: "bold"}}>Done</Text>
                                 </TouchableOpacity>
+
                             </View>
                     )}
                  </Formik>
+
+                 <View style ={{textAlign: "centers", alignItems: "center"}}>
+                     <Text>Payment are secured and encrypted</Text>
+                 </View>
             </View>
 
-              
+              <View style = {{alignItems: "center",backgroundColor: "#fff", borderTopWidth: 1, position: "relative", }}>
+                    <BottomNav nav ={navigation}/>
+                </View>
                
 
           
@@ -99,15 +107,17 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         color: "#F8F9FA",
-        justifyContent: "space-evenly"
+        justifyContent: "space-between",
 
     },
     textArea:{
-        alignItems: "center",
-        marginTop: 80,
+        alignItems: "left",
+        marginTop: 30,
+        marginLeft: 35,
+        marginRight:35,
+
     },
     inputArea:{
-        marginTop: 40,
 
     },
     inputs:{
