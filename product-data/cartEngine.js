@@ -17,14 +17,14 @@ export const CartProvider=(props) =>{
               id,
               qty: 1,
               product,
-              totalPrice: product.amount 
+              totalPrice: items.amount 
           }];
       }
       else { 
           return prevItems.map((item) => {
             if(item.id == id) {
               item.qty++;
-              item.totalPrice += product.amount;
+              item.totalPrice += items.amount;
             }
             return item;
           });

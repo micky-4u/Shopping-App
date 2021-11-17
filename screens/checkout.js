@@ -30,7 +30,7 @@ const Checkout = ({navigation}) =>{
                                  Fullname: '',
                                  email: '',
                                  Adress: '',
-                                 Llalndmark: '',
+                                 CardNumber: '',
                                  repass: ''
                                  }}
                             onSubmit={values => console.log(values)}
@@ -60,10 +60,10 @@ const Checkout = ({navigation}) =>{
                                 
                                 
                                     <TextInput
-                                    onChangeText={handleChange('Llalndmark')}
-                                    onBlur={handleBlur('Llalndmark')}
-                                    value={values.Llalndmark}
-                                    placeholder= "Llalndmark"
+                                    onChangeText={handleChange('CardNumber')}
+                                    onBlur={handleBlur('CardNumber')}
+                                    value={values.CardNumber}
+                                    placeholder= "Card Number"
                                     secureTextEntry = {true}
                                     style = {styles.inputs}
                                     
@@ -72,7 +72,7 @@ const Checkout = ({navigation}) =>{
                                     onChangeText={handleChange('repass')}
                                     onBlur={handleBlur('repass')}
                                     value={values.repass}
-                                    placeholder= ""
+                                    placeholder= "Hard holder name"
                                     secureTextEntry = {true}
                                     style = {styles.inputs}
                                     
